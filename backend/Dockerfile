@@ -1,20 +1,20 @@
-# Use uma imagem base oficial do OpenJDK para Java 17
+
+# Use an official OpenJDK base image for Java 17
 FROM openjdk:17-jdk
 
-# Defina o diretório de trabalho dentro do contêiner
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copie todos os arquivos do seu aplicativo Spring para o contêiner
+# Copy all files from your Spring application to the container
 COPY . .
 
-# Certifique-se de que o Maven Wrapper está presente e execute a compilação (se necessário)
-# Você pode adicionar outros comandos de construção aqui, dependendo da estrutura do seu projeto
+# Make sure the Maven Wrapper is present and run the build (if needed)
+# You can add other build commands here, depending on your project structure
 RUN chmod +x mvnw
 RUN ./mvnw clean install
 
-# Porta em que o aplicativo Spring está configurado para ouvir
-EXPOSE 8380
+# Expose the port that the Spring application is configured to listen on
+EXPOSE 8080
 
-# Comando para executar o aplicativo Spring
+# Command to run the Spring application
 CMD ["./mvnw", "spring-boot:run"]
-
