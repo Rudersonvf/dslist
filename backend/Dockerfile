@@ -1,4 +1,3 @@
-
 # Use a slim version of the official OpenJDK base image for Java 17
 FROM openjdk:17-jdk-slim
 
@@ -15,15 +14,17 @@ COPY . .
 # Update the apt-get command to accept the 'curl' package
 RUN apt-get update && apt-get install -y curl
 
-# Fix the typo in the command, should it be 'chmod' not 'chmode'
+# Fix the typo in the command, it should be 'chmod' not 'chmode'
 RUN chmod +x mvnw
 
-# Also, fix the typo in the command, it should be './mvnw' not '.\mvnw'
+# Also, fix the typo in the command, it should be './mvnw' instead of 'notmvnw'
 RUN ./mvnw clean install
 
 # Expose the port that the Spring application is configured to listen on
 # The error message indicates that the Dockerfile has not exposed port 8183,
 # but the previous line correctly exposes port 8182, so no changes are needed here.
+# (Note: If the Spring application is configured to listen on a different port, update the following line accordingly)
+EXPOSE 8183
 
 # Command to run the Spring application
 CMD ["./mvnw", "spring-boot:run"]
