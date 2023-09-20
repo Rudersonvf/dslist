@@ -12,6 +12,7 @@ COPY . .
 # You can add other build commands here, depending on your project structure
 
 # Add the curl package to install it, which is needed to download Maven Wrapper
+# Update the apt-get command to accept the 'curl' package
 RUN apt-get update && apt-get install -y curl
 
 # Fix the typo in the command, it should be 'chmod' not 'chmode'
