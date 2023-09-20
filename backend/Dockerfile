@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Porta em que o aplicativo Spring está configurado para ouvir
-EXPOSE 8080
+EXPOSE 8380
 
 # Comando para compilar e executar o aplicativo Spring
 CMD ["./mvnw", "spring-boot:run"]
