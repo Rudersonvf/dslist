@@ -21,7 +21,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean install
 
 # Expose the port that the Spring application is configured to listen on
-EXPOSE 3000
+EXPOSE 8182
 
 # Command to run the Spring application
 CMD ["./mvnw", "spring-boot:run"]
